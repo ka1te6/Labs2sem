@@ -4,8 +4,7 @@
 #include <sstream>
 
 int main() {
-    
-	setlocale(LC_ALL, "Russian");
+    setlocale(LC_ALL, "Russian");
     
     std::ifstream inputFile("students.txt");
     std::vector<Student> students;
@@ -31,7 +30,7 @@ int main() {
     for (const auto& student : students) {
         if (student.nalichie_stepuhi()) {
             student.print();
-            outputFile << "Стипендия одобрена для " << student.getName() << ".\n";
+            outputFile << "РЎС‚РёРїРµРЅРґРёСЏ РѕРґРѕР±СЂРµРЅР° РґР»СЏ " << student.getName() << ".\n";
         }
     }
 
