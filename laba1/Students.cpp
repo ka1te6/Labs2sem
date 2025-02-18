@@ -6,7 +6,7 @@ Student::Student(const std::string& name, const std::vector<int>& marks)
 }
 
 void Student::print() const {
-    std::cout << "ÔÈÎ: " << fullName << " Îöåíêè: ";
+    std::cout << "Ð¤Ð˜Ðž: " << fullName << "ÐžÑ†ÐµÐ½ÐºÐ¸: ";
     for (int grade : grades) {
         std::cout << grade << " ";
     }
