@@ -11,6 +11,7 @@ private:
     std::vector<int> grades;
 
 public:
+    Student();
     Student(const std::string& name, const std::vector<int>& marks);
     void print() const;
     bool nalichie_stepuhi() const;
