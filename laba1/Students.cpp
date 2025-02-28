@@ -5,6 +5,11 @@ Student::Student(const std::string& name, const std::vector<int>& marks)
     : fullName(name), grades(marks) {
 }
 
+Student::Student() {
+    this->fullName = "";
+    this->grades = {};
+}
+
 void Student::print() const {
     std::cout << "ФИО: " << fullName << "Оценки: ";
     for (int grade : grades) {
