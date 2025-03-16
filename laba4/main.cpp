@@ -30,7 +30,7 @@ int main() {
 
 	deposits.sort();
 
-	ofile << "\nÎòñîðòèðîâàííûé ñïèñîê:\n";
+	ofile << "\nÐžÑ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº:\n";
 	for (const auto& deposit : deposits) {
 		ofile << deposit << '\n';
 	}
@@ -38,13 +38,14 @@ int main() {
 	std::vector<Bank> depositsVector;
 	std::copy(deposits.begin(), deposits.end(), std::back_inserter(depositsVector));
 
-	ofile << ("\nÊîïèÿ ñïèñêà â Âåêòîð:\n");
+	ofile << ("\nÐšÐ¾Ð¿Ð¸Ñ ÑÐ¿Ð¸ÑÐºÐ° Ð² Ð’ÐµÐºÑ‚Ð¾Ñ€:\n");
 	for (const auto& deposit : depositsVector) {
 		ofile << deposit << '\n';
 	}
 
 	ofile.close();
-	std::cout << "Äàííûå çàïèñàíû";
+	std::cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ð¸ÑÐ°Ð½Ñ‹";
 
 	return 0;
 }
+
