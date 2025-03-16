@@ -1,0 +1,4 @@
+Alpha 1000 USD 3.5
+Beta 5000 EUR 2.0
+Gamma 1500 USD 4.2
+Delta 2000 RUB 3.0
