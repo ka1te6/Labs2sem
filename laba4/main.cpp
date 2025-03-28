@@ -30,6 +30,7 @@ int main() {
 
 	deposits.sort();
 
+
 	ofile << "\nОтсортированный список:\n";
 	for (const auto& deposit : deposits) {
 		ofile << deposit << '\n';
@@ -42,10 +43,15 @@ int main() {
 	for (const auto& deposit : depositsVector) {
 		ofile << deposit << '\n';
 	}
-
 	ofile.close();
 	std::cout << "Данные записаны";
 
+	std::cout << "\nВклады больше 1500:\n";
+	for (const auto& deposit : deposits) {
+		if (deposit.getSumm() >= 1500) {
+			std::cout << deposit << '\n';
+		}
+	}
+
 	return 0;
 }
-
