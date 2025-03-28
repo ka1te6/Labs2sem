@@ -6,6 +6,11 @@
 
 
 class Bank {
+private:
+	std::string name_;
+	double summ_;
+	std::string valuta_;
+	double procent_;
 public:
 	Bank() = default;
 	Bank(const std::string& name, double summ, const std::string& valuta, double procent);
@@ -18,17 +23,10 @@ public:
 
 	bool operator<(const Bank& other) const;
 
-private:
-	std::string name_;
-	double summ_;
-	std::string valuta_;
-	double procent_;
+	double getSumm() const { return summ_; }
 };
-	
+
 #endif
-
-
-
 
 
 
