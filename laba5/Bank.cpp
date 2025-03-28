@@ -7,10 +7,10 @@ Bank::Bank(const std::string& name, double summ, const std::string& valuta, doub
 
 std::ostream& operator<<(std::ostream& os, const Bank& deposit) {
 
-	os << "Èìÿ: " << deposit.name_
-		<< ", Âêëàä: " << deposit.summ_
-		<< ", Âàëþòà: " << deposit.valuta_
-		<< ", Ñòàâêà: " << deposit.procent_ << "%";
+	os << "Ð˜Ð¼Ñ: " << deposit.name_
+		<< ", Ð’ÐºÐ»Ð°Ð´: " << deposit.summ_
+		<< ", Ð’Ð°Ð»ÑŽÑ‚Ð°: " << deposit.valuta_
+		<< ", Ð¡Ñ‚Ð°Ð²ÐºÐ°: " << deposit.procent_ << "%";
 	return os;
 }
 
