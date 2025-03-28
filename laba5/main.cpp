@@ -24,17 +24,17 @@ int main() {
     ifile.close();
 
     std::ofstream ofile("output.txt");
-    ofile << "\nÑîäåðæèìîå std::set : \n" << std::endl;
+    ofile << "\nÐ¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ std::set : \n" << std::endl;
     for (const auto& bank : bankSet) {
         ofile << bank << '\n';
     }
 
-    ofile << "\nÑîäåðæèìîå std::unordered_set :\n" << std::endl;
+    ofile << "\nÐ¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ std::unordered_set :\n" << std::endl;
     for (const auto& bank : bankUnorderedSet) {
         ofile << bank << '\n';
     }
 
     ofile.close();
-    std::cout << "Äàííûå çàïèñàíû" ;
+    std::cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ð¸ÑÐ°Ð½Ñ‹\n" ;
     return 0;
 }
