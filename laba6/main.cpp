@@ -11,8 +11,8 @@ public:
         : std::out_of_range(message), x(x), y(y), z(z) {}
 
     void printDetails() const {
-        std::cout << "Ошибка: " << what() << "\n";
-        std::cout << "Недопустимые координаты: (" << x << ", " << y << ", " << z << ")\n";
+        std::cout << "РћС€РёР±РєР°: " << what() << "\n";
+        std::cout << "РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹: (" << x << ", " << y << ", " << z << ")\n";
     }
 };
 
@@ -23,7 +23,7 @@ private:
 public:
     PointInCube(double x, double y, double z) : x(x), y(y), z(z) {
         if (x < 0 || x > 1 || y < 0 || y > 1 || z < 0 || z > 1) {
-            throw PointOutOfRangeException("Координаты вне диапазона [0, 1]", x, y, z);
+            throw PointOutOfRangeException("РљРѕРѕСЂРґРёРЅР°С‚С‹ РІРЅРµ РґРёР°РїР°Р·РѕРЅР° [0, 1]", x, y, z);
         }
     }
 
@@ -38,7 +38,7 @@ int main() {
 
     try {
         PointInCube p1(0.5, 0.3, 0.7);
-        std::cout << "Точка создана: ("
+        std::cout << "РўРѕС‡РєР° СЃРѕР·РґР°РЅР°: ("
             << p1.getX() << ", " << p1.getY() << ", " << p1.getZ() << ")\n";
     }
     catch (const PointOutOfRangeException& e) {
@@ -47,7 +47,7 @@ int main() {
 
     try {
         PointInCube p2(1.2, 0.5, -0.1);
-        std::cout << "Точка создана: ("
+        std::cout << "РўРѕС‡РєР° СЃРѕР·РґР°РЅР°: ("
             << p2.getX() << ", " << p2.getY() << ", " << p2.getZ() << ")\n";
     }
     catch (const PointOutOfRangeException& e) {
