@@ -34,6 +34,13 @@ void sortPart(std::vector<double>& arr, int start, int end, const std::string& t
 
         std::lock_guard<std::mutex> lock(printMutex);
         std::cout << threadName << ": " << arr[i] << std::endl;
+
+	 /*
+        // Вариант 2: ручная блокировка
+        printMutex.lock();
+        std::cout << threadName << ": " << arr[i] << std::endl;
+        printMutex.unlock();
+        */
     }
 
     {
