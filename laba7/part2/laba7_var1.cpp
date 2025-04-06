@@ -57,7 +57,7 @@ int main() {
         x = dis(gen);
     }
 
-    std::cout << "Èñõîäíûé ìàññèâ:\n";
+    std::cout << "Ğ˜ÑÑ…Ğ¾Ğ´Ğ½Ñ‹Ğ¹ Ğ¼Ğ°ÑÑĞ¸Ğ²:\n";
     for (auto x : arr) {
         std::cout << x << " ";
     }
@@ -69,7 +69,7 @@ int main() {
     {
         std::unique_lock<std::mutex> lock(cvMutex);
         cv.wait(lock, [] { return finishedThreads >= 2; });
-        std::cout << "Ãëàâíûé ïîòîê: ïîòîêè 1 è 2 çàâåğøèëè ñîğòèğîâêó.\n";
+        std::cout << "Ğ“Ğ»Ğ°Ğ²Ğ½Ñ‹Ğ¹ Ğ¿Ğ¾Ñ‚Ğ¾Ğº: Ğ¿Ğ¾Ñ‚Ğ¾ĞºĞ¸ 1 Ğ¸ 2 Ğ·Ğ°Ğ²ĞµÑ€ÑˆĞ¸Ğ»Ğ¸ ÑĞ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºÑƒ.\n";
     }
 
     std::thread t3(sortPart, std::ref(arr), 0, SIZE, "thread3");
@@ -77,13 +77,13 @@ int main() {
     {
         std::unique_lock<std::mutex> lock(cvMutex);
         cv.wait(lock, [] { return finishedThreads >= 3; });
-        std::cout << "Ãëàâíûé ïîòîê: ïîòîê 3 çàâåğøèë ôèíàëüíóş ñîğòèğîâêó.\n";
+        std::cout << "Ğ“Ğ»Ğ°Ğ²Ğ½Ñ‹Ğ¹ Ğ¿Ğ¾Ñ‚Ğ¾Ğº: Ğ¿Ğ¾Ñ‚Ğ¾Ğº 3 Ğ·Ğ°Ğ²ĞµÑ€ÑˆĞ¸Ğ» Ñ„Ğ¸Ğ½Ğ°Ğ»ÑŒĞ½ÑƒÑ ÑĞ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºÑƒ.\n";
     }
 
     t1.join();
     t2.join();
     t3.join();
 
-    std::cout << "\nÃëàâíûé ïîòîê: ğàáîòà çàâåğøåíà.\n";
+    std::cout << "\nĞ“Ğ»Ğ°Ğ²Ğ½Ñ‹Ğ¹ Ğ¿Ğ¾Ñ‚Ğ¾Ğº: Ñ€Ğ°Ğ±Ğ¾Ñ‚Ğ° Ğ·Ğ°Ğ²ĞµÑ€ÑˆĞµĞ½Ğ°.\n";
     return 0;
 }
