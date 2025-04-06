@@ -1,5 +1,3 @@
-// === Файл: multithread_thread.cpp ===
-
 #include <iostream>
 #include <vector>
 #include <string>
