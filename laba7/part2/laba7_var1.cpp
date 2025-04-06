@@ -1,11 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <future>
 #include <thread>
 #include <random>
 #include <chrono>
-#include <algorithm>
 #include <mutex>
 #include <condition_variable>
 
@@ -34,10 +32,8 @@ void sortPart(std::vector<double>& arr, int start, int end, const std::string& t
     for (int i = start; i < end; ++i) {
         std::this_thread::sleep_for(std::chrono::milliseconds(DELAY_MS));
 
-        {
-            std::lock_guard<std::mutex> lock(printMutex);
-            std::cout << threadName << ": " << arr[i] << std::endl;
-        }
+        std::lock_guard<std::mutex> lock(printMutex);
+        std::cout << threadName << ": " << arr[i] << std::endl;
     }
 
     {
@@ -61,30 +57,33 @@ int main() {
         x = dis(gen);
     }
 
-    std::cout << "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð²:\n";
+    std::cout << "Èñõîäíûé ìàññèâ:\n";
     for (auto x : arr) {
         std::cout << x << " ";
     }
     std::cout << "\n\n";
 
-    auto f1 = std::async(std::launch::async, sortPart, std::ref(arr), 0, SIZE / 2, "thread1");
-    auto f2 = std::async(std::launch::async, sortPart, std::ref(arr), SIZE / 2, SIZE, "thread2");
+    std::thread t1(sortPart, std::ref(arr), 0, SIZE / 2, "thread1");
+    std::thread t2(sortPart, std::ref(arr), SIZE / 2, SIZE, "thread2");
 
     {
         std::unique_lock<std::mutex> lock(cvMutex);
         cv.wait(lock, [] { return finishedThreads >= 2; });
-        std::cout << "Ð“Ð»Ð°Ð²Ð½Ñ‹Ð¹ Ð¿Ð¾Ñ‚Ð¾Ðº: Ð¿Ð¾Ñ‚Ð¾ÐºÐ¸ 1 Ð¸ 2 Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ð»Ð¸ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÑƒ.\n";
+        std::cout << "Ãëàâíûé ïîòîê: ïîòîêè 1 è 2 çàâåðøèëè ñîðòèðîâêó.\n";
     }
 
-    auto f3 = std::async(std::launch::async, sortPart, std::ref(arr), 0, SIZE, "thread3");
+    std::thread t3(sortPart, std::ref(arr), 0, SIZE, "thread3");
 
     {
         std::unique_lock<std::mutex> lock(cvMutex);
         cv.wait(lock, [] { return finishedThreads >= 3; });
-        std::cout << "Ð“Ð»Ð°Ð²Ð½Ñ‹Ð¹ Ð¿Ð¾Ñ‚Ð¾Ðº: Ð¿Ð¾Ñ‚Ð¾Ðº 3 Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ð» Ñ„Ð¸Ð½Ð°Ð»ÑŒÐ½ÑƒÑŽ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÑƒ.\n";
+        std::cout << "Ãëàâíûé ïîòîê: ïîòîê 3 çàâåðøèë ôèíàëüíóþ ñîðòèðîâêó.\n";
     }
 
-    std::cout << "\nÐ“Ð»Ð°Ð²Ð½Ñ‹Ð¹ Ð¿Ð¾Ñ‚Ð¾Ðº: Ñ€Ð°Ð±Ð¾Ñ‚Ð° Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð°.\n";
+    t1.join();
+    t2.join();
+    t3.join();
+
+    std::cout << "\nÃëàâíûé ïîòîê: ðàáîòà çàâåðøåíà.\n";
     return 0;
 }
-
