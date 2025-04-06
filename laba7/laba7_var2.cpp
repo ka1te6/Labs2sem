@@ -1,4 +1,4 @@
-// === Файл: multithread_thread.cpp ===
+// === Р¤Р°Р№Р»: multithread_thread.cpp ===
 
 #include <iostream>
 #include <vector>
@@ -45,9 +45,6 @@ void sortPart(std::vector<double>& arr, int start, int end, const std::string& t
 }
 
 int main() {
-
-	setlocale(LC_ALL, "Russian");   
-
     const int SIZE = 20;
     std::vector<double> arr(SIZE);
 
@@ -58,7 +55,7 @@ int main() {
         x = dis(gen);
     }
 
-    std::cout << "Исходный массив:\n";
+    std::cout << "РСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ:\n";
     for (auto x : arr) {
         std::cout << x << " ";
     }
@@ -70,7 +67,7 @@ int main() {
     {
         std::unique_lock<std::mutex> lock(cvMutex);
         cv.wait(lock, [] { return finishedThreads >= 2; });
-        std::cout << "Главный поток: потоки 1 и 2 завершили сортировку.\n";
+        std::cout << "Р“Р»Р°РІРЅС‹Р№ РїРѕС‚РѕРє: РїРѕС‚РѕРєРё 1 Рё 2 Р·Р°РІРµСЂС€РёР»Рё СЃРѕСЂС‚РёСЂРѕРІРєСѓ.\n";
     }
 
     std::thread t3(sortPart, std::ref(arr), 0, SIZE, "thread3");
@@ -78,14 +75,13 @@ int main() {
     {
         std::unique_lock<std::mutex> lock(cvMutex);
         cv.wait(lock, [] { return finishedThreads >= 3; });
-        std::cout << "Главный поток: поток 3 завершил финальную сортировку.\n";
+        std::cout << "Р“Р»Р°РІРЅС‹Р№ РїРѕС‚РѕРє: РїРѕС‚РѕРє 3 Р·Р°РІРµСЂС€РёР» С„РёРЅР°Р»СЊРЅСѓСЋ СЃРѕСЂС‚РёСЂРѕРІРєСѓ.\n";
     }
 
     t1.join();
     t2.join();
     t3.join();
 
-    std::cout << "\nГлавный поток: работа завершена.\n";
+    std::cout << "\nР“Р»Р°РІРЅС‹Р№ РїРѕС‚РѕРє: СЂР°Р±РѕС‚Р° Р·Р°РІРµСЂС€РµРЅР°.\n";
     return 0;
 }
-
